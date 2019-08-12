@@ -158,7 +158,7 @@ $ cd __프로젝트 이름/폴더 이름__
 $ django-admin startproject __프로젝트이름__ .
 ```
 
-* 프로젝트이름으로 구성도니 폴더와, `manage.py`가 생성된다.
+* 프로젝트이름으로 구성된 폴더와, `manage.py`가 생성된다.
   * `__init__.py` : 해당 폴더가 패키지로 인식될 수 있게끔 작성되는 파일
   * `settings.py` : **django 설정과 관련된 파일**
   * `urls.py` : **url 관리 **
