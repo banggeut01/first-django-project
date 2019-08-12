@@ -43,3 +43,21 @@ def dinner(request):
         'google_link': 'https://www.google.com'
     }
     return render(request, 'dinner.html', context)
+
+# 인자에 들어가는 변수는 urls.py에서 정의한 이름과 같아야함!
+def cube(request, number):
+    result = number**3
+    context = {
+        'result': result,
+        'number': number,
+        'numbers': [1, 2, 3],
+        'students': {'지수': '지수!'}
+    }
+    return render(request, 'cube.html', context)
+
+def about(request, name, age):
+    context = {
+        'name': name,
+        'age': age
+    }
+    return render(request, 'about.html', context)

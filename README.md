@@ -88,6 +88,65 @@ $ pip install django
   * python 3.7.4
   * django 2.2.4
 
+### 0. 가상환경 실행 + .gitignore
+
+> 가상환경을 사용하는 이유는 프로젝트마다 활용되는 라이브러리가 다르고, 동일한 라이브러리라도 버전이 다를 수 있다.
+>
+> 따라서, 프로젝트 하면서 라이브러리 삭제 혹은 변경을 하는 것이 아니라 각 프로젝트만다 독립된 가상환경을 부여하여 의존성을 없앤다.
+>
+> 항상 django 실행할 때마다 가상환경을 활성화 시키는 것을 습관화 하자!
+>
+> 추후에 DS/MLD/DL 학습 시에는 anaconda를 활용하기도 한다.
+
+가상환경은 python에서 기본으로 제공하고 있는[`venv`](https://docs.python.org/ko/3/library/venv.html)를 활용한다.
+
+1. 가상환경 생성
+
+   원하는 디렉토리에서 아래의 명령어를 입력한다.
+
+   ```bash
+   $ python -m venv __venv__
+   ```
+
+   * `__venv__` 여기에 가상환경 이름을 작성하는데, 보통 `venv`라고 설정한다.
+   * `__venv__` 폴더가 생성되는데, 구조는 다음과 같다.
+     * `Lib`: 가상환경에 설치된 라이브러리 모음.
+     * `Scripts`: 가상환경 실행과 관련된 파일
+
+2. 가상환경 실행
+
+   ```bash
+   $ ls
+   venv/ ...
+   $ source venv/Scripts/activate
+   (venv)
+   $ python -V
+   Python 3.7.4
+   ```
+
+   * 반드시 해당 명령어는 `venv` 폴더가 있는 곳에서 실행시킨다.
+   * **`bash shell`에서는 `activate` 파일을 실행하여야 한다.**
+     * `cmd` : `activate.bat`
+     * `power shell`: `activate.ps1`
+
+3. 가상환경 종료
+
+   ```bash
+   $ deactivate
+   ```
+
+4. `.gitignore` 등록
+
+   ```bash
+   venv/
+   ```
+
+   * visual studio code를 활용하는 경우에는 `.vscode/`
+   * python 환경에서는 `__pycache__/`
+   * pycharm 환경에서는 `.idea/`
+
+   위의 폴더들은 `.gitignore`에 등록하는 습관을 가지자! 잘 모르겠으면 [gitignore.io](https://gitignore.io)에서 찾아서 복사하자:)
+
 ### 1. Django 프로젝트 시작
 
 ```bash
@@ -230,4 +289,63 @@ $ python manage.py runserver
 [Document | The Django template language](https://docs.djangoproject.com/en/2.2/ref/templates/language/)
 
 [Built-in template tags and filters](https://docs.djangoproject.com/en/2.2/ref/templates/builtins/)
+
+* urls.py
+
+```python
+from django.contrib import admin
+from django.urls import path
+
+
+# 1. url 설정
+# pages app 의 views.py 파일 불러오기
+from pages import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # 1. url 설정
+    # url, 해당하는 views의 함수
+    path('', views.index),
+    # variable routing
+    # url의 특정 값을 변수처럼 활용
+    path('cube/<int:number>/', views.cube),
+]
+```
+
+
+
+* views.py : 모든 연산이나 로직처리는 view에서 할 것,
+
+```python
+# 인자에 들어가는 변수는 urls.py에서 정의한 이름(number)과 같아야함!
+def cube(request, number):
+    result = number**3
+    context = {
+        'result': result,
+        'number': number,
+        'numbers': [1, 2, 3],
+        'students': {'지수': '지수!'}
+    }
+    return render(request, 'cube.html', context)
+```
+
+* cube.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>{{ number }}의 세제곱은? 답: {{ result }}~</h1>
+  <!-- numbers[0] -->
+  <h1>{{ numbers.0 }}</h1>
+  <h1>{{ students.지수 }}</h1>
+</body>
+</html>
+```
 
