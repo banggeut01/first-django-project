@@ -225,3 +225,9 @@ $ python manage.py runserver
 
 `localhost:8000`에서 확인해보자!
 
+
+
+[Document | The Django template language](https://docs.djangoproject.com/en/2.2/ref/templates/language/)
+
+[Built-in template tags and filters](https://docs.djangoproject.com/en/2.2/ref/templates/builtins/)
+
