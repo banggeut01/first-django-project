@@ -63,16 +63,15 @@ def about(request, name, age):
     return render(request, 'pages/about.html', context)
 
 def isitgwangbok(request):
-    # now = datetime.datetime.now()
-    # if now.month == 8 and now.day == 15:
-    #     result = True
-    # else:
-    #     result = False
-    # context = {
-    #     'result': result
-    # }
-    # return render(request, 'pages/isitgwangbok.html', context)
-    return render(request, 'pages/isitgwangbok.html')
+    now = datetime.datetime.now()
+    if now.month == 8 and now.day == 15:
+        result = True
+    else:
+        result = False
+    context = {
+        'result': result
+    }
+    return render(request, 'pages/isitgwangbok.html', context)
 
 def ping(request):
     return render(request, 'pages/ping.html')
