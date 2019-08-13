@@ -19,7 +19,7 @@
           - django에서 POST 요청으로 form을 보내는 경우 보안산의 이유로 항상 csrf_token을 넣어줘야함.
           - setting.py의 MIDDLEWARE 4번째 CsrfViewMiddleware
    -->
-  <form action="/signup_result/" method="POST">
+  <form action="/pages/signup_result/" method="POST">
     {% csrf_token %}
     <table>
       <tr>
