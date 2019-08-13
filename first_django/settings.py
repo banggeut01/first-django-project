@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!8yclceui28$9pb#49_if4c-qh=jg5rb02m(c4hpdj^u^n89yi'
+SECRET_KEY = '+mwyz4mv9=ayg8g38w@ch_3-7j6hi=@c-r5=7wq9-36n6$c@g9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pages', # app 등록!
+    'pages',
     'services',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,8 +56,14 @@ ROOT_URLCONF = 'first_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        # 만약 app 폴더의 templates 폴더가 아닌 곳에서 템플릿 파일을 관리하려면
+        # 아래의 DIRS에 추가한다!
+        'DIRS': [
+            # BASE_DIR은 16번째 줄에 정의된 변수 - 현재 프로젝트 폴더 위치를 뜻한다.
+            # first-django-project 폴더임.
+            os.path.join(BASE_DIR, 'first_django', 'templates'), # first-django-project/first_django/templates/
+        ],
+        'APP_DIRS': True, # INSTALLED_APPS에 있는 APP의 templates 폴더들을 템플릿으로 관리!
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -105,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

@@ -398,4 +398,6 @@ def cube(request, number):
   STATIC_URL = '/static/'
   ```
 
-  
+* django는 app별로 templates를 나눠 가지고 있다 하더라도 하나의 templates에 있는 것처럼 모아서 가지고 있다. 따라서 찾는 html을 만나는 순간(install이 먼저 된 문서가) 바로 보여지게 된다.
+
+  urls.py => views.py => templates
