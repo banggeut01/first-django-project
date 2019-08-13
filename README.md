@@ -349,3 +349,53 @@ def cube(request, number):
 </html>
 ```
 
+
+
+### 정적파일 관리(static file)
+
+* img(.png), css,  js
+
+* app폴더 안에 static 폴더 만들기
+
+* static폴더 안에 css, img 따로 폴더 만들어주기
+
+* 접근하기
+
+  ```html
+  <!--
+    이런 방법으로 css를 가져올 수 없음
+    <link rel="stylesheet" href="./static/signup.css"> 
+  -->
+  
+  {% load static %}
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'stylesheets/style.css' %}"> 
+  </head>
+  <body>
+    {% if result == True %}
+    <h1>축하합니다! 회원가입이 완료되셨어요.</h1>
+    {% else %}
+    <h1>비밀번호가 일치하지 않아요. 다시 시도해보세요.</h1>
+    <a href="/signup">입력하기</a>
+    {% endif %}
+    <img scr="{% static 'images/재봄.jpg' %}">
+  </body>
+  </html>
+  ```
+
+  ```python
+  # settings.py
+  
+  # Static files (CSS, JavaScript, Images)
+  # https://docs.djangoproject.com/en/2.2/howto/static-files/
+  
+  STATIC_URL = '/static/'
+  ```
+
+  

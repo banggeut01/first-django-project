@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+      font-size: 50px;
+    }
+  </style>
+</head>
+<body>
+  <br><br>
+  {% now 'md' %}
+  {% if now %}
+  <h1>예~~~</h1>
+  {% else %}
+  <h1>아니요</h1>
+  {% endif %}
+  <br><br><br>
+  <p>{% now 'DATE_FORMAT' %}</p>
+  <!-- <h1>{{ result }}</h1> -->
+</body>
+</html>

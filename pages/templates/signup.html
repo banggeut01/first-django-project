@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    form
+      action: 요청 보내는 곳
+      method: 요청 보내는 방식
+        GET: DB에서 어떠한 값을 꺼내오거나, 단순 요청.
+          - URL에 querystring으로 요청이 보내짐
+          - ?username=Jin&password=123
+        POST: DB의 어떠한 값을 추가하거나 삭제하는 경우
+          - HTTP 요청의 body (url에 보이지 않음)
+          - django에서 POST 요청으로 form을 보내는 경우 보안산의 이유로 항상 csrf_token을 넣어줘야함.
+          - setting.py의 MIDDLEWARE 4번째 CsrfViewMiddleware
+   -->
+  <form action="/signup_result/" method="POST">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>
+          <label for="username">username : </label>
+        </td>
+        <td>
+          <input id="username" type="text" name="username">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="pwd">password : </label>
+        </td>
+        <td>
+          <input id="pwd" type="password" name="pwd">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="pwd_cnf">password confirmation : </label>
+        </td>
+        <td>
+          <input id="pwd_cnf" type="password" name="pwd_cnf">
+        </td>
+      </tr>
+    </table>
+    <input type="submit" value="가입하기">
+  </form>
+</body>
+</html>
