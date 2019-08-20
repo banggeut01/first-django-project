@@ -1,4 +1,4 @@
-"""first_django URL Configuration
+"""classroom URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -14,16 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
+# pages app 의 views.py 파일 불러오기
 from pages import views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # 각 앱별로 따로 urls.py를 정의하여 관리함.
-    path('pages/', include('pages.urls')),
-    path('services/', include('services.urls')),
-    path('w14/', include('w14.urls')),
+    path('info/', views.info), # url 정의
+    path('student/<str:name>/', views.student),
+    path('pages/one/', views.one),
+    path('pages/two/', views.two),
 ]
-

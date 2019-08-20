@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block body %}
+<h1>ARTII</h1>
+<form action="artii_result">
+  <label for="text">내용 : </label>
+  <input type="text" name="text" id="text" placeholder="내용을 입력해주세요.">
+  <br>
+  <label for="font">font</label>
+  <br>
+  <input type="radio" name="font" id="font" value="rounded">rounded
+  <input type="radio" name="font" id="font" value="acrobatic">acrobatic
+  <input type="radio" name="font" id="font" value="alligator">alligator
+  <input type="radio" name="font" id="font" value="short">short
+  <input type="submit" value="artii만들러가기!">
+</form>
+{% endblock %}
