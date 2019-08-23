@@ -226,12 +226,11 @@ $ python manage.py startapp __app이름__
 ```python
 # first_django/settings.py
 #..
-INSTALLED_APPS = {
+INSTALLED_APPS = [
     'pages',
     'django.contrib.admin',
     # ...
 ]
-}
 #..
 ```
 
